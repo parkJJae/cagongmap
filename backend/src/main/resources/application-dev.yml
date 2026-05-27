@@ -29,3 +29,7 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace  # 파라미터 바인딩 값까지 표시
+
+app:
+  report:
+    threshold: 3

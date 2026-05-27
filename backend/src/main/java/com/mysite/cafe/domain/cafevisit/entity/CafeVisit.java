@@ -47,6 +47,14 @@ public class CafeVisit extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    // 신고 횟수
+    @Column(nullable = false)
+    private int reportCount = 0;
+
+    // 운영자 검토 필요 플래그 (신고 임계값 도달 시 true)
+    @Column(nullable = false)
+    private boolean flaggedForReview = false;
+
     @Builder
     private CafeVisit(String name, String address, Double lat, Double lng,
                       Integer rating, Integer priceLevel, Boolean hasOutlet,
@@ -67,7 +75,6 @@ public class CafeVisit extends BaseEntity {
     }
 
     //카페 방문 기록 수정
-
     public void update(String name, String address, Double lat, Double lng,
                        Integer rating, Integer priceLevel, Boolean hasOutlet,
                        WifiSpeed wifiSpeed, Integer studyScore, String memo,
@@ -83,5 +90,18 @@ public class CafeVisit extends BaseEntity {
         this.studyScore = studyScore;
         this.memo = memo;
         this.visitedAt = visitedAt;
+    }
+
+    // 신고 횟수 증가, 임계값 도달 시 검토 플래그 ON
+    public void increaseReportCount(int threshold) {
+        this.reportCount++;
+        if (this.reportCount >= threshold) {
+            this.flaggedForReview = true;
+        }
+    }
+
+    // 운영자 검토 완료 처리 (카운트 유지 플래그만 해제)
+    public void markAsReviewed() {
+        this.flaggedForReview = false;
     }
 }
