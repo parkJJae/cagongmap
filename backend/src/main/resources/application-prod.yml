@@ -15,3 +15,5 @@ spring:
 app:
   report:
     threshold: 3
+  admin:
+    token: ${ADMIN_TOKEN}

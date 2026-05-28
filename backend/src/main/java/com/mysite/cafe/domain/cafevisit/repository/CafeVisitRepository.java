@@ -12,6 +12,5 @@ public interface CafeVisitRepository extends JpaRepository<CafeVisit, Long> {
     @Query("SELECT c FROM CafeVisit c LEFT JOIN FETCH c.user")
     List<CafeVisit> findAllWithUser();
 
-    @Query("SELECT c FROM CafeVisit c LEFT JOIN FETCH c.user WHERE c.name LIKE %:keyword%")
-    List<CafeVisit> searchByName(@Param("keyword") String keyword);
+    List<CafeVisit> findByFlaggedForReviewTrueOrderByReportCountDesc();
 }

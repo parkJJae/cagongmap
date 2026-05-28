@@ -150,9 +150,4 @@ public class CafeVisitService {
         cafeVisitRepository.deleteById(id);
     }
 
-    public List<CafeVisitResponse> searchByName(String keyword){
-        return cafeVisitRepository.searchByName(keyword).stream()
-                .map(this::toResponse)
-                .toList();
-    }
 }

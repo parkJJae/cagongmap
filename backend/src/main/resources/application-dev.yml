@@ -33,3 +33,5 @@ logging:
 app:
   report:
     threshold: 3
+  admin:
+    token: dev-admin-token-1234
