@@ -1167,3 +1167,40 @@ body {
     height: 260px;
   }
 }
+
+/* ───────── 관리자 로그인 ───────── */
+
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px;
+}
+
+.admin-login-form {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-elev);
+  border-radius: 20px;
+  padding: 40px 36px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.admin-login-form h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.admin-login-sub {
+  font-size: 14px;
+  color: var(--text-sub);
+  margin: 0 0 4px;
+}
