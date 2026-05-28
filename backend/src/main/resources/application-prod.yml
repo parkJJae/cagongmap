@@ -17,3 +17,5 @@ app:
     threshold: 3
   admin:
     token: ${ADMIN_TOKEN}
+    username: ${ADMIN_USERNAME}
+    password: ${ADMIN_PASSWORD}

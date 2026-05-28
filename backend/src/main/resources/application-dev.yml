@@ -35,3 +35,5 @@ app:
     threshold: 3
   admin:
     token: dev-admin-token-1234
+    username: admin
+    password: admin1234
