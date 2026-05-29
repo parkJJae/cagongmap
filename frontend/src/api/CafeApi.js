@@ -41,4 +41,8 @@ export const updateCafe = (id, data) => api.put(`/cafes/${id}`, data);
 // 카페 삭제
 export const deleteCafe = (id) => api.delete(`/cafes/${id}`);
 
+// 카페 신고 (비회원, IP 기반 중복 방지)
+export const reportCafe = (cafeVisitId, reason) =>
+    api.post(`/cafes/${cafeVisitId}/reports`, { reason });
+
 export default api;

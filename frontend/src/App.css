@@ -1421,3 +1421,95 @@ body {
     border-bottom: 1px solid var(--border);
   }
 }
+
+/* ───────── 신고 모달 ───────── */
+
+.report-modal {
+  width: 440px;
+  max-width: calc(100% - 40px);
+  background: var(--bg-elev);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.report-modal-target {
+  font-size: 14px;
+  color: var(--text-sub);
+  margin: 0;
+}
+
+.report-modal-target strong {
+  color: var(--text);
+}
+
+.report-modal-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-reason {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.report-reason:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-strong);
+}
+
+.report-reason--active {
+  background: var(--purple-bg);
+  border-color: var(--purple-border);
+}
+
+.report-reason input[type="radio"] {
+  accent-color: var(--purple);
+  cursor: pointer;
+}
+
+.report-modal-notice {
+  font-size: 12px;
+  color: var(--text-mute);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.report-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.report-trigger {
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(252, 165, 165, 0.3);
+  background: rgba(252, 165, 165, 0.08);
+  color: #FCA5A5;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  align-self: flex-start;
+}
+
+.report-trigger:hover {
+  background: rgba(252, 165, 165, 0.15);
+}

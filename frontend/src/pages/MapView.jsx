@@ -2,11 +2,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getAllCafes } from "../api/CafeApi";
 import { loadKakaoMaps } from "../lib/kakaoLoader";
+import ReportModal from "../components/ReportModal";
 
 export default function MapView() {
     const [cafes, setCafes] = useState([]);
     const [selected, setSelected] = useState(null);
     const [search, setSearch] = useState("");
+    const [reportTarget, setReportTarget] = useState(null);
 
     // 카카오 지도 관련
     const mapRef = useRef(null);          // 실제 지도 div
@@ -206,6 +208,14 @@ export default function MapView() {
                                     {selected.registeredBy} 님의 기록
                                 </div>
                             )}
+
+                            <button
+                                className="report-trigger"
+                                type="button"
+                                onClick={() => setReportTarget(selected)}
+                            >
+                                🚩 이 카페 신고하기
+                            </button>
                         </>
                     ) : (
                         <div className="fake-map-card-empty">
@@ -220,6 +230,13 @@ export default function MapView() {
                     <div ref={mapRef} className="real-map" />
                 </div>
             </section>
+
+            {reportTarget && (
+                <ReportModal
+                    cafe={reportTarget}
+                    onClose={() => setReportTarget(null)}
+                />
+            )}
         </div>
     );
 }
