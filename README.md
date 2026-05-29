@@ -60,7 +60,7 @@
 - **axios** + 커스텀 인터셉터 (공통 응답 자동 처리)
 
 ### Infra
-- AWS EC2 (Ubuntu) 직접 배포 경험
+- Oracle Cloud Infrastructure VM에 직접 배포 (운영자 1명 규모 기준 비용 최적화)
 
 <br>
 
