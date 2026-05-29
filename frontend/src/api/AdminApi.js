@@ -55,7 +55,7 @@ adminApi.interceptors.response.use(
         const status = error.response?.status;
 
         // 401이 아니거나, 이미 재시도한 요청이면 그냥 에러 반환.
-        if (status !== 401 || originalRequest._retry) {
+        if ((status !== 401 && status !== 403) || originalRequest._retry) {
             const message =
                 error.response?.data?.message ||
                 error.message ||
