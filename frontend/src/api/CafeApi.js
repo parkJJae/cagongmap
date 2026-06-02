@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
 });
 
 // 백엔드 응답이 { success, data, message } 형식이라

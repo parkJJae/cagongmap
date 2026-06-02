@@ -2,7 +2,7 @@ import axios from "axios";
 import { tokenStore } from "./tokenStore";
 
 const adminApi = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
 });
 
 // ── 요청 인터셉터: 매 요청에 Bearer AT 부착 ──
@@ -93,7 +93,7 @@ adminApi.interceptors.response.use(
         try {
             // refresh는 AT가 필요 없고, 인터셉터 꼬임 방지를 위해 순수 axios 사용.
             const res = await axios.post(
-                "http://localhost:8080/api/auth/refresh",
+                `${import.meta.env.VITE_API_BASE_URL}/api/auth/refresh`,
                 { refreshToken }
             );
             // 이 응답은 인터셉터를 안 거치므로 { success, data, message } 원형 그대로.
@@ -119,11 +119,11 @@ adminApi.interceptors.response.use(
 
 // 로그인 (인증 전이라 순수 axios — adminApi 인터셉터 불필요)
 export const adminLogin = (username, password) =>
-    axios.post("http://localhost:8080/api/auth/login", { username, password });
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, { username, password });
 
 // 로그아웃 (RT 폐기)
 export const adminLogout = (refreshToken) =>
-    axios.post("http://localhost:8080/api/auth/logout", { refreshToken });
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/logout`, { refreshToken });
 
 // 검토 필요 카페 목록
 export const getFlaggedCafes = () => adminApi.get("/admin/reports");
