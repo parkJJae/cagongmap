@@ -40,3 +40,5 @@ app:
     secret: dev-jwt-secret-key-must-be-at-least-32-bytes-long-for-hs256!!
     access-token-validity-seconds: 1800     # 30분
     refresh-token-validity-seconds: 1209600 # 14일
+  cors:
+    allowed-origins: http://localhost:5173
