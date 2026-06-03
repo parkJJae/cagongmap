@@ -21,6 +21,16 @@
 
 <br>
 
+<img width="1916" height="940" alt="image" src="https://github.com/user-attachments/assets/73f0883a-0ee0-405f-ae8a-8733e7f9548b" /> <br>
+*▲ 관리자 로그인 페이지* (https://cagongmap-theta.vercel.app/admin/login)
+<br>
+
+<img width="1914" height="869" alt="image" src="https://github.com/user-attachments/assets/6be063d6-26c9-40c3-8105-0ef977f1c0b2" /> <br>
+*▲ 신고 관리 대시보드*
+<br>
+
+
+
 ## 📌 프로젝트 소개
 
 카공맵은 로그인 없이 누구나 빠르게 카페 정보를 기록하고 공유할 수 있는 지도 기반 서비스입니다.
