@@ -5,6 +5,10 @@
 
 <br>
 
+**배포 주소** — [https://cagongmap-theta.vercel.app](https://cagongmap-theta.vercel.app)
+
+<br>
+
 ## 미리보기
 
 <img width="900" alt="카공맵 메인 페이지" src="https://github.com/user-attachments/assets/6fb8c583-e1ce-4932-a1a5-fdadaa9d6430" /> <br>
@@ -60,7 +64,7 @@
 - **axios** + 커스텀 인터셉터 (공통 응답 자동 처리)
 
 ### Infra
-- Oracle Cloud Infrastructure VM에 직접 배포 (운영자 1명 규모 기준 비용 최적화)
+- **AWS Lightsail+ Vercel** — 백엔드는 Lightsail + nginx + systemd로 운영, 프론트는 Vercel 배포
 
 <br>
 
@@ -89,6 +93,8 @@ cagongmap/
 | 지도 시각화 | 등록된 카페를 지도 위 마커로 표시 (만족도별 색상) |
 | 검색 | 카페명/지점으로 빠른 검색 |
 | 비회원 모델 | 로그인 없이 닉네임만으로 즉시 기록 가능 |
+| 신고 기능 | IP 기반 중복 방지, 임계값 도달 시 관리자 검토 큐로 진입 |
+| 관리자 페이지 | JWT 보호, `/admin/login` URL 직접 진입 (메인 노출 X) |
 
 <br>
 
