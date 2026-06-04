@@ -19,6 +19,7 @@ export default function NewCafe({ onBack }) {
     });
 
     const [status, setStatus] = useState(null);
+    const [errorMsg, setErrorMsg] = useState("");
     const [isKakaoOpen, setIsKakaoOpen] = useState(false);
 
     // 더블클릭 방지용 잠금장치
@@ -52,6 +53,7 @@ export default function NewCafe({ onBack }) {
         if (isSubmittingRef.current) return;
         isSubmittingRef.current = true;
 
+        setErrorMsg("");
         setStatus("loading");
 
         try {
@@ -74,6 +76,7 @@ export default function NewCafe({ onBack }) {
             setStatus("success");
         } catch (err) {
             console.error(err);
+            setErrorMsg(err.message || "등록 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.");
             setStatus("error");
         } finally {
             // 성공/실패 무관하게 잠금 해제
@@ -230,7 +233,7 @@ export default function NewCafe({ onBack }) {
                     )}
                     {status === "error" && (
                         <p className="status error">
-                            등록 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.
+                            {errorMsg}
                         </p>
                     )}
                 </form>
