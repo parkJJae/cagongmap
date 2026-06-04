@@ -1,5 +1,6 @@
 package com.mysite.cafe.domain.report.service;
 
+import com.mysite.cafe.domain.cafevisit.dto.AdminCafeListResponse;
 import com.mysite.cafe.domain.cafevisit.entity.CafeVisit;
 import com.mysite.cafe.domain.cafevisit.repository.CafeVisitRepository;
 import com.mysite.cafe.domain.report.dto.ReportDetailResponse;
@@ -87,5 +88,24 @@ public class AdminReportService {
 
         reportRepository.deleteByCafeVisitId(cafeVisitId);
         cafeVisitRepository.deleteById(cafeVisitId);
+    }
+
+    // 전체 카페 목록
+    public List<AdminCafeListResponse> findAllCafes() {
+        return cafeVisitRepository.findAllWithUserOrderByCreatedAtDesc().stream()
+                .map(c -> new AdminCafeListResponse(
+                        c.getId(),
+                        c.getName(),
+                        c.getAddress(),
+                        c.getUser() != null ? c.getUser().getNickname() : null,
+                        c.getRating(),
+                        c.getHasOutlet(),
+                        c.getWifiSpeed() != null ? c.getWifiSpeed().name() : null,
+                        c.getMemo(),
+                        c.getReportCount(),
+                        c.isFlaggedForReview(),
+                        c.getCreatedAt()
+                ))
+                .toList();
     }
 }

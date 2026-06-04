@@ -1,5 +1,6 @@
 package com.mysite.cafe.domain.report.controller;
 
+import com.mysite.cafe.domain.cafevisit.dto.AdminCafeListResponse;
 import com.mysite.cafe.domain.report.dto.ReportDetailResponse;
 import com.mysite.cafe.domain.report.dto.ReportedCafeResponse;
 import com.mysite.cafe.domain.report.service.AdminReportService;
@@ -29,6 +30,13 @@ public class AdminReportController {
             @PathVariable Long cafeVisitId
     ) {
         ReportDetailResponse response = adminReportService.findReportDetail(cafeVisitId);
+        return ResponseEntity.ok(ApiResponse.success(response));
+    }
+
+    // 전체 카페 목록
+    @GetMapping("/api/admin/cafes")
+    public ResponseEntity<ApiResponse<List<AdminCafeListResponse>>> findAllCafes() {
+        List<AdminCafeListResponse> response = adminReportService.findAllCafes();
         return ResponseEntity.ok(ApiResponse.success(response));
     }
 

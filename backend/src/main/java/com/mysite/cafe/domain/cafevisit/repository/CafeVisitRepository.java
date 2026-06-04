@@ -13,4 +13,7 @@ public interface CafeVisitRepository extends JpaRepository<CafeVisit, Long> {
     List<CafeVisit> findAllWithUser();
 
     List<CafeVisit> findByFlaggedForReviewTrueOrderByReportCountDesc();
+
+    @Query("SELECT c FROM CafeVisit c LEFT JOIN FETCH c.user ORDER BY c.createdAt DESC")
+    List<CafeVisit> findAllWithUserOrderByCreatedAtDesc();
 }
