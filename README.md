@@ -115,7 +115,8 @@ cagongmap/
 
 프로젝트 진행 중 마주친 문제와 해결 과정을 글로 정리했습니다.
 
-- **[N+1 문제를 발견하고 해결한 이야기](https://velog.io/@qwg2825/N1-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EB%B0%9C%EA%B2%AC%ED%95%98%EA%B3%A0-%ED%95%B4%EA%B2%B0%ED%95%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0)** — Fetch Join으로 6번 쿼리를 1번으로
+- **[N+1 문제를 발견하고 해결한 이야기](https://velog.io/@qwg2825/N1-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EB%B0%9C%EA%B2%AC%ED%95%98%EA%B3%A0-%ED%95%B4%EA%B2%B0%ED%95%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0)** - Fetch Join으로 6번 쿼리를 1번으로 <br>
+- **[Vercel rewrites + Spring CORS 거부 트러블 슈팅 (Velog)](https://velog.io/@qwg2825/Vercel-rewrites-Spring-CORS-%EA%B1%B0%EB%B6%80-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)** - Vercel 배포 후 모든 POST가 CORS 거부되던 문제
 
 <br>
 
