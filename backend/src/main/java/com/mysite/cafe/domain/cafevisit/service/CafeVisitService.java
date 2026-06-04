@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,6 +27,16 @@ public class CafeVisitService {
      //카페 방문 기록 등록
     @Transactional
     public CafeVisitResponse create(CafeVisitRequest request) {
+
+        // 같은 좌표의 카페가 10초 안에 등록됐다면 중복 등록으로 간주
+        LocalDateTime since = LocalDateTime.now().minusSeconds(10);
+        if (request.lat() != null && request.lng() != null
+                && cafeVisitRepository.existsRecentByLocation(request.lat(), request.lng(), since)) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "방금 등록된 카페입니다. 잠시 후 다시 시도해주세요."
+            );
+        }
         // 닉네임으로 User 조회 (없으면생성)
         User user = findOrCreateUser(request.nickname());
 
