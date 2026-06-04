@@ -181,6 +181,8 @@ List<CafeVisit> findAllWithUser();
 
 **[N+1 문제를 발견하고 해결한 이야기 (Velog)](https://velog.io/@qwg2825/N1-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EB%B0%9C%EA%B2%AC%ED%95%98%EA%B3%A0-%ED%95%B4%EA%B2%B0%ED%95%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0)**
 
+<br>
+
 ### #2 무효 토큰이 401 대신 403을 던지던 문제
 
 > **증상**: 관리자 페이지에서 토큰이 만료되거나 무효해진 상태로 API 호출 시 401이 아닌 403이 반환되어, 프론트의 토큰 자동 갱신 인터셉터(401 트리거)가 동작하지 않음
@@ -189,6 +191,17 @@ List<CafeVisit> findAllWithUser();
 
 관리자 API 영역은 정당한 권한 부족으로 403이 나올 케이스가 사실상 없습니다(관리자 페이지에서 관리자 API만 호출). 따라서 403은 토큰 문제로 간주하고 동일하게 refresh를 시도, 실패 시 강제 로그아웃하는 흐름으로 일원화했습니다.
 
+<br>
+
+### #3 Vercel 배포 후 모든 POST가 CORS 거부되던 문제
+
+> **증상**: Vercel에 프론트 배포 후 카페 등록(POST `/api/cafes`)이 전부 `403 Forbidden`, 응답 본문 `Invalid CORS request`
+> **원인**: Vercel rewrites가 브라우저 입장에선 same-origin을 만들어주지만, 백엔드로 프록시할 때 `Origin: https://cagongmap-theta.vercel.app` 헤더를 그대로 전달함. Spring Security CORS 화이트리스트에 prod 도메인이 없어 거부됨
+> **해결**: CORS 허용 origin을 `app.cors.allowed-origins` 프로퍼티로 외부화하고 prod yml에서 Vercel 도메인 추가
+
+dev/prod 환경에서 허용 origin이 다르므로 코드에 박지 않고 yml에서 환경별로 분리 관리하도록 했습니다. 자세한 진단 과정은 별도 글로 정리했습니다.
+
+ **[Vercel rewrites + Spring CORS 거부 트러블 슈팅 (Velog)](https://velog.io/@qwg2825/Vercel-rewrites-Spring-CORS-%EA%B1%B0%EB%B6%80-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)**
 <br>
 
 ## API 명세
