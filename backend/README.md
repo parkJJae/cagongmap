@@ -31,7 +31,8 @@
 ## 아키텍처
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/91a245ef-330a-4cfb-ad2d-9bfdb7e17579" alt="카공맵 시스템 아키텍처" width="780"/>
+  <img width="1421" height="643" alt="image" src="https://github.com/user-attachments/assets/2e42e996-eb5b-46af-b1d1-cc10ba429a36" />
+
 </p>
 
 백엔드는 **Controller → Service → Repository**의 전형적인 3-Layer 구조를 따르되 다음 보조 컴포넌트로 책임을 명확히 분리했습니다.
