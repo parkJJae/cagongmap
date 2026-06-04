@@ -1,5 +1,5 @@
 // src/pages/NewCafe.jsx
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createCafe } from "../api/CafeApi";
 import KakaoSearchModal from "../components/KakaoSearchModal";
 
@@ -20,6 +20,11 @@ export default function NewCafe({ onBack }) {
 
     const [status, setStatus] = useState(null);
     const [isKakaoOpen, setIsKakaoOpen] = useState(false);
+
+    // 더블클릭 방지용 잠금장치
+    // setState는 비동기라 status가 "loading"으로 반영되기 전에 두 번째 클릭이 통과될 수 있음
+    // useRef는 동기적으로 즉시 반영되므로 함수 진입 시점에 확실히 차단 가능
+    const isSubmittingRef = useRef(false);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -42,6 +47,11 @@ export default function NewCafe({ onBack }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // 이미 제출 중이면 즉시 차단
+        if (isSubmittingRef.current) return;
+        isSubmittingRef.current = true;
+
         setStatus("loading");
 
         try {
@@ -65,6 +75,9 @@ export default function NewCafe({ onBack }) {
         } catch (err) {
             console.error(err);
             setStatus("error");
+        } finally {
+            // 성공/실패 무관하게 잠금 해제
+            isSubmittingRef.current = false;
         }
     };
 
