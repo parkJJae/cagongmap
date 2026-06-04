@@ -52,7 +52,8 @@
 ## 시스템 아키텍처
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/91a245ef-330a-4cfb-ad2d-9bfdb7e17579" alt="카공맵 시스템 아키텍처" width="780"/>
+  <img width="1421" height="643" alt="image" src="https://github.com/user-attachments/assets/82ae5010-adc7-4595-bd76-fdab87996716" />
+
 </p>
 
 브라우저 → React(Vite) + 카카오맵 → Spring Boot REST API → JPA → H2/MySQL 으로 이어지는 단순한 4-tier 구조입니다.
