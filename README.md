@@ -28,7 +28,7 @@
 <img width="1914" height="869" alt="image" src="https://github.com/user-attachments/assets/6be063d6-26c9-40c3-8105-0ef977f1c0b2" /> <br>
 <img width="1902" height="732" alt="image" src="https://github.com/user-attachments/assets/fff98365-5f5a-479b-ac22-a98692121c90" /> <br>
 
-*▲ 신고 관리 대시보드*
+*▲ 신고 관리 대시보드 (수동 삭제 가능)*
 <br>
 
 
